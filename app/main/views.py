@@ -23,13 +23,13 @@ def home():
     if form.validate_on_submit():
         subemail = form.email.data
         senderemail = MAIL_USERNAME
-        msg = Message('Hey there.', sender=senderemail, recipients=subemail)
-        msg.html = '<h2>Welcome to Gs-Blog.</h2> <p>G-Blog is a personal blogging website where you can create and share your opinions and other users can read and comment on them. Additionally, add a feature that displays random quotes to inspire your users.</p>'
+        msg = Message('Hey user', sender=senderemail, recipients=subemail)
+        msg.html = '<h2>Welcome to Simakush-Bloging-Website.</h2> <p>This is a personal blogging website where you can create and share your opinions and other users can read and comment on them. This website has a feature that displays random quotes to inspire their users.</p>'
         mail.send(msg)
-        flash('You have been added to our subscription', 'success')
+        flash('You have been added to our subscription', 'welcome')
         return redirect(url_for('main.home'))
 
-    return render_template('home.html', title='Home',quote_data=quote_data, posts=posts, form=form)
+    return render_template('index.html', title='Home',quote_data=quote_data, posts=posts, form=form)
 
 
 @main.route("/about")
@@ -44,7 +44,7 @@ def account(uname):
     if user is None:
         abort(404)
     posts = Post.query.filter_by(user_id=current_user.id).all()
-    return render_template('profile/account.html', title='Account', user=user, posts=posts)
+    return render_template('profile/user_account.html', title='Account', user=user, posts=posts)
 
 
 @main.route('/account/<uname>/update', methods=['GET', 'POST'])
@@ -88,9 +88,9 @@ def new_post():
                     author=current_user, upvotes=0, downvotes=0)
         db.session.add(post)
         db.session.commit()
-        flash('Your post has been created', 'success')
+        flash('Your post has been created successfully')
         return redirect(url_for('main.home'))
-    return render_template('create_post.html', title='New Blog', form=form, legend='New Blog')
+    return render_template('new_post.html', title='New Blog', form=form, legend='New Blog')
 
 
 @main.route("/post/<int:post_id>", methods=['GET', 'POST'])
@@ -132,12 +132,12 @@ def update_post(post_id):
         post.title = form.title.data
         post.content = form.content.data
         db.session.commit()
-        flash('Your post has been updated', 'success')
+        flash('Your post has been updated successfully')
         return redirect(url_for('main.post', post_id=post.id))
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
-    return render_template('create_post.html', title='Update Post', form=form, legend='Update Blog')
+    return render_template('new_post.html', title='Update Post', form=form, legend='Update Blog')
 
 
 @main.route("/post/<int:post_id>/delete", methods=['POST'])
@@ -148,5 +148,5 @@ def delete_post(post_id):
         abort(403)
     db.session.delete(post)
     db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    flash('Your post has been deleted successfully')
     return redirect(url_for('main.home'))

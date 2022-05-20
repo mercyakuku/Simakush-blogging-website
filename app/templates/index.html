@@ -8,7 +8,7 @@
 
             <div class="card mt-2 ">
               <div class="card-header">
-                Random Quote
+                Random Quotes
               </div>
               <div class="card-body">
                 <blockquote class="blockquote mb-0">
@@ -18,7 +18,7 @@
               </div>
             </div>
 
-            <form method="POST" action="" class="mt-4 border-bottom border-top border-danger">
+            <form method="POST" action="" class="mt-4 border-bottom border-top border-info">
               <div class="form-group mt-3">
                 {{ form.email.label(class="form-control-label") }}
                 {% if form.email.errors %}
@@ -48,7 +48,7 @@
                   {% if post.author.image_file %}
                   <img src="{{url_for('static',filename=post.author.image_file)}}" class=" img-fluid img-thumbnail card-img rounded-circle mx-auto d-block mt-3"  style="height: 150px; width: 150px;" alt="Please add image">
                   {%else%}
-                  <p class="text-center mt-3 text-secondary">No profile picture</p>
+                  <p class="text-center mt-3 text-secondary">Post profile picture</p>
               
                   {% endif %}
                 </div>
@@ -57,8 +57,8 @@
                     <a class="mr-2 card-title font-italic font-weight-bolder" href="{{ url_for('main.account',uname=post.author.username) }}">{{ post.author.username }}</a>
                     <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                     <h2><a class="article-title text-primary" href="{{ url_for('main.post', post_id=post.id) }}">{{ post.title }}</a></h2>
-                    <hr class="bg-warning">
-                    <p class="article-content text-light">{{ post.content }}</p>
+                    <hr class="bg-light">
+                    <p class="article-content text-primary">{{ post.content }}</p>
                   </div>
                 </div>
               </div>

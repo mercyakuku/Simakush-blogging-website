@@ -5,7 +5,7 @@ class Config:
 
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/gblog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://grace:simakush@localhost/simablog'
 
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
@@ -20,8 +20,14 @@ class Config:
 
 
 class ProdConfig(Config):
-  SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL").replace("://", "ql://", 1)
+     uri = os.getenv("DATABASE_URL")  
+     if uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
 
+        
+     SQLALCHEMY_DATABASE_URI=uri
+
+  
 
 class DevConfig(Config):
     DEBUG = True

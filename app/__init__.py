@@ -7,10 +7,9 @@ from flask_bootstrap import Bootstrap
 from flask_simplemde import SimpleMDE
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
+
 MAIL_USERNAME = os.getenv("MAIL_USERNAME")
 MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 

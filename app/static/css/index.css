@@ -36,26 +36,7 @@ body{
     margin:0;
     padding:0;
     }
-    
-    
-    #hellobutton {
-    margin-top:20px;
-        border: 0;
-        background: orangered;
-        elevation: 20deg;
-        width: 80px;
-        height: 40px;
-        box-shadow: #989898 0 0 20px;
-        border-radius: 5px;
-        color: white;
-        font-size: 18px;
-        justify-content: right;
-    }
-    
-    #hellobutton:hover {
-        background: darkmagenta;
-    }
-    
+      
     
     /*Home styles*/
     .container {
@@ -77,7 +58,7 @@ body{
     }
     
     .bgimage{
-    background-image:url('https://bit.ly/2QOpC4L');
+    background-image:url('/app/static/photos/myblog.jpeg');
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if title %}
-        <title>Gs-Bog - {{ title }}</title>
+        <title>Simakush-Blogging-Website{{ title }}</title>
     {% else %}
-        <title>Gs-Blog</title>
+        <title>Simakush-Blogging-Website</title>
     {% endif %}
 
      {% block styles %}
@@ -16,7 +16,7 @@
 
     <style>
       body {
-        background-image: url("https://user-images.githubusercontent.com/66039545/168473019-2734cc2b-e151-43e6-ac51-0d2b3570bc60.jpg");
+        background-image: url("/app/static/photos/myblog.jpeg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -33,7 +33,7 @@
     
     {% block title %}
     <div class="">
-        <h2 class="text-center display-4 head_text" style="font-family: 'Marck Script', cursive;">Gs-Blog</h2>
+        <h2 class="text-center display-4 head_text" style="font-family: 'Marck Script', cursive;">Simakush-Blogging-Website</h2>
     </div>
      {% endblock %}
 

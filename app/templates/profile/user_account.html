@@ -11,7 +11,7 @@
     {% if user.bio %}
       <p> {{user.bio}}</p>
     {%else%}
-      <p> {{user.username| capitalize}} has no bio </p>
+      <p> {{user.username| capitalize}} no biography </p>
     {% endif %}
 
     {% if user == current_user %}
@@ -24,7 +24,7 @@
   <div class="col-md-6">
     {% if user.image_file %}
 
-    <img src="{{url_for('static',filename=user.image_file)}}" alt="" class="img-thumbnail ">
+    <img src="{{url_for('static',filename=user.image_file)}}" alt="image" class="img-thumbnail ">
 
     {%else%}
     <p>No profile picture</p>
@@ -44,7 +44,7 @@
 </div>
 <br><br>
 <div class="row">
-  <h1>Blogs...</h1>
+  <h1>The Blogs Section...</h1>
   {% for post in posts %}
   <div class="card mb-3">
     <div class="row no-gutters">
@@ -52,7 +52,7 @@
         <div class="card-body">
             <span class="mr-2 card-title" href="#">{{ post.author.username }}</span>
             <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-            <h2><a class="article-title text-primary" href="{{ url_for('main.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <h2><a class="article-title text-success" href="{{ url_for('main.post', post_id=post.id) }}">{{ post.title }}</a></h2>
             <hr>
             <p class="article-content">{{ post.content }}</p>
         </div>
